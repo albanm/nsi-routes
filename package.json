@@ -1,0 +1,32 @@
+{
+  "name": "nsi-routes",
+  "version": "0.0.0",
+  "description": "Node.js Simple Integration - Routes commons",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/albanm/nsi-routes.git"
+  },
+  "keywords": [
+    "integration",
+    "ESB"
+  ],
+  "author": "Alban Mouton <alban.mouton@gmail.com>",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/albanm/nsi-routes/issues"
+  },
+  "devDependencies": {
+    "mocha": "~1.20.1",
+    "should": "~4.0.4"
+  },
+  "dependencies": {
+    "lodash": "~2.4.1",
+    "jayschema": "~0.2.7",
+    "winston": "~0.7.3",
+    "libxmljs": "~0.11.0"
+  }
+}
