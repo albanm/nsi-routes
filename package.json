@@ -1,7 +1,7 @@
 {
   "name": "nsi-routes",
   "version": "0.0.0",
-  "description": "Node.js Simple Integration - Routes commons",
+  "description": "Node.js Services Integration - Routes commons",
   "main": "index.js",
   "scripts": {
     "test": "mocha -R spec"
