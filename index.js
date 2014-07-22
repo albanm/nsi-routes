@@ -1,29 +1,66 @@
 var _ = require("lodash");
 var winston = require('winston');
-
-var jsonSchema = require('./lib/json-schema');
+var Elasticsearch = require( 'winston-elasticsearch' );
 
 function RoutesManager(options) {
-	this.options = _.merge({
+	var that = this;
+
+	that.options = _.merge({
 		before: null,
 		after: null,
-		profile: true,
 		log: {
 			active: true,
 			config: {
 				console: {
 					level: 'info',
 					colorize: 'true',
-					label: 'NSI - Routes'
+					label: 'nsi.routes'
 				}
-			}
+			},
+			metadata: {}
+		},
+		monitor: {
+			active: true,
+			config: {
+				console: {
+					level: 'info',
+					colorize: 'true',
+					label: 'nsi.monitor'
+				},
+				elasticsearch: {
+					level: 'info', // error by default = disabling it, just set level to 'info' and here we go
+					indexName: 'nsi-routes',
+					source: 'NSI - Routes',
+					disable_fields: true,
+					typeName: 'log'
+				}
+			},
+			metadata: {}
 		}
 	}, options);
 
-	winston.loggers.add('nsi-routes', this.options.log.config);
-	this.logger = winston.loggers.get('nsi-routes');
-	this.log = function(level, message, metadata) {
-		if (this.options.log.active) this.logger.log(level, message, metadata || null);
+	winston.loggers.add('nsi-routes', that.options.log.config);
+	that.logger = winston.loggers.get('nsi-routes');
+
+	that.log = function(level, message, metadata) {
+		if (that.options.log.active) that.logger.log(level, message, _.extend(metadata || {}, that.options.log.metadata));
+	};
+
+	winston.loggers.add('nsi-monitor', that.options.monitor.config);
+	that.monitorLogger = winston.loggers.get('nsi-monitor');
+
+	that.monitor = function(message, metadata) {
+		if (that.options.monitor.active) {
+			that.monitorLogger.info(message, _.extend(metadata, that.options.monitor.metadata), function(err) {
+				// log failure of the monitor logger in the log logger. This is quite arbitratyr but
+				// the monitor logger is more susceptible to fail as it can use elasticsearch
+				if (err) that.logger.error('Monitoring failure', {
+					originalMessage: message,
+					originalMetadata: metadata,
+					error: err
+				});
+			});
+		}
 	};
 }
 
@@ -37,6 +74,12 @@ RoutesManager.prototype.__defineGetter__('jsonSchema', function() {
 });
 RoutesManager.prototype.__defineGetter__('xsd', function() {
 	return require('./lib/xsd');
+});
+RoutesManager.prototype.__defineGetter__('to', function() {
+	return require('./lib/queues').to;
+});
+RoutesManager.prototype.__defineGetter__('inOut', function() {
+	return require('./lib/queues').inOut;
 });
 
 module.exports = function(options) {

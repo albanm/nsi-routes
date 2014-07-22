@@ -30,7 +30,6 @@ Optionaly you can use an *options* object as parameter.
 {
 	before: null,  // a function to run as a before hook, signature: function(message, headers, callback)
 	after: null,   // a function to run as a after hook, signature: function(err, message, headers)
-	profile: true, // activate profiling of routes
 	log: {
 		active: true, // activate creation of a logger
 		config: {     // see https://github.com/flatiron/winston#working-with-multiple-loggers-in-winston

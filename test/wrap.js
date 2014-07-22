@@ -12,7 +12,7 @@ describe('route wrapping', function() {
 			setTimeout(function() {
 				callback(null, 'response', headers);
 			}, 10);
-		}, 'Route 1');
+		}, 'route1');
 	});
 	it('should preserve the original function', function(callback) {
 		route1('message', {
