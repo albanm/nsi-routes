@@ -58,8 +58,31 @@ route('message', function(err, responseMessage, responseHeaders){
 });
 ```
 
+Advanced usage
+--------------
+
+For recipes with more advanced usage of this module, have a look at its parent project [NSI](https://github.com/albanm/nsi).
+
 Common routes
 -------------
+
+### NSI Queues wrappers
+
+Simple wrappers for the already simple message sending functions from [NSI - Queues helpers](https://github.com/albanm/nsi-queues).
+
+```js
+var route = routesHelper.to(queuesHelper, 'my.queue');
+route('message', function(err){
+	if (err) console.log('Message sending failed.');
+	else console.log('Message was sent and acknowledged !');
+});
+
+var route = routesHelper.inOut(queuesHelper, 'my.queue');
+route('message', function(err){
+	if (err) console.log('Message sending failed.');
+	else console.log('Response received: ' + message);
+});
+```
 
 ### JSON schema validation
 
