@@ -81,6 +81,9 @@ RoutesManager.prototype.__defineGetter__('to', function() {
 RoutesManager.prototype.__defineGetter__('inOut', function() {
 	return require('./lib/queues').inOut;
 });
+RoutesManager.prototype.__defineGetter__('http', function() {
+	return require('./lib/http');
+});
 
 module.exports = function(options) {
 	var routesManager = new RoutesManager(options);
