@@ -2,6 +2,8 @@ nsi-routes
 ==========
 
 [![Build status](https://travis-ci.org/albanm/nsi-routes.svg)](https://travis-ci.org/albanm/nsi-routes)
+[![Code Climate](https://codeclimate.com/github/albanm/nsi-routes/badges/gpa.svg)](https://codeclimate.com/github/albanm/nsi-routes)
+[![Coverage Status](https://coveralls.io/repos/albanm/nsi-routes/badge.png)](https://coveralls.io/r/albanm/nsi-routes)
 [![NPM version](https://badge.fury.io/js/nsi-routes.svg)](http://badge.fury.io/js/nsi-routes)
 
 *Node.js Services Integration - Routes commons*
