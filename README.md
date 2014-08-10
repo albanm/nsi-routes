@@ -1,4 +1,4 @@
-nsi-routes
+nsi-routes ![Build status](https://travis-ci.org/albanm/nsi-routes.svg)
 ==========
 
 *Node.js Services Integration - Routes commons*
