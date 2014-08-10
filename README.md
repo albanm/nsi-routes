@@ -1,5 +1,8 @@
-nsi-routes [![Build status](https://travis-ci.org/albanm/nsi-routes.svg)](https://travis-ci.org/albanm/nsi-routes)
+nsi-routes
 ==========
+
+[![Build status](https://travis-ci.org/albanm/nsi-routes.svg)](https://travis-ci.org/albanm/nsi-routes)
+[![NPM version](https://badge.fury.io/js/nsi-routes.svg)](http://badge.fury.io/js/nsi-routes)
 
 *Node.js Services Integration - Routes commons*
 
