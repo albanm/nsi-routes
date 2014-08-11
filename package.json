@@ -37,5 +37,10 @@
     "handlebars": "~2.0.0-alpha.4",
     "simple-errors": "0.0.5",
     "node-uuid": "~1.4.1"
+  },
+  "config": {
+    "blanket": {
+      "pattern": "lib"
+    }
   }
 }
