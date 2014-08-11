@@ -30,22 +30,43 @@ var routesHelper = nsiRoutes();
 ```
 
 Optionaly you can use an *options* object as parameter.
+This object will be merged with the default options :
 
 ```js
-{
-	before: null,  // a function to run as a before hook, signature: function(body, headers, callback)
-	after: null,   // a function to run as a after hook, signature: function(err, body, headers)
-	log: {
-		active: true, // activate creation of a logger
-		config: {     // see https://github.com/flatiron/winston#working-with-multiple-loggers-in-winston
-			console: {
-				level: 'info',
-				colorize: 'true',
-				label: 'NSI - Routes'
-			}
+	{
+		before: null, // a function to run as a before hook, signature: function(body, headers, callback)
+		after: null,  // a function to run as a after hook, signature: function(err, body, headers),
+		watch: false, // set to true to enable watching file resources (schemas, templates, etc)
+		log: {        // main logger configuration. info=routes initialization, debug=all messages contents
+			active: true,
+			config: { // winston configuration, see https://github.com/flatiron/winston#working-with-multiple-loggers-in-winston
+				console: {
+					level: 'info',
+					colorize: 'true',
+					label: 'nsi.routes'
+				}
+			},
+			metadata: {} // add metadata to all logs
+		},
+		monitor: {    // monitoring logger. Used to profile all routes durations.
+			active: true,
+			config: { // winston configuration, see https://github.com/flatiron/winston#working-with-multiple-loggers-in-winston
+				console: {
+					level: 'info',
+					colorize: 'true',
+					label: 'nsi.monitor'
+				},
+				elasticsearch: { // send monitoring logs to elasticsearch to maybe use kibana, see https://github.com/jackdbernier/winston-elasticsearch
+					level: 'error', // error by default = disabling it, just set level to 'info' and here we go
+					indexName: 'nsi-routes',
+					source: 'NSI - Routes',
+					disable_fields: true,
+					typeName: 'log'
+				}
+			},
+			metadata: {}  // add metadata to all logs
 		}
 	}
-}
 ```
 
 Wrap a *route* to allow profiling, tracing, etc. First parameter of *wrap()* is the function, second parameter is a name.

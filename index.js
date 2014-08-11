@@ -8,7 +8,7 @@ function RoutesManager(options) {
 	that.options = _.merge({
 		before: null,
 		after: null,
-		log: {
+		log: { // main logger configuration. Log routes initialization, errors, etc.
 			active: true,
 			config: {
 				console: {
@@ -28,7 +28,7 @@ function RoutesManager(options) {
 					label: 'nsi.monitor'
 				},
 				elasticsearch: {
-					level: 'info', // error by default = disabling it, just set level to 'info' and here we go
+					level: 'error', // error by default = disabling it, just set level to 'info' and here we go
 					indexName: 'nsi-routes',
 					source: 'NSI - Routes',
 					disable_fields: true,
