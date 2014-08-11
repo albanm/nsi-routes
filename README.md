@@ -68,6 +68,14 @@ Advanced usage
 
 For recipes with more advanced usage of this module, have a look at its parent project [NSI](https://github.com/albanm/nsi).
 
+Continuation identifier and headers
+-----------------------------------
+
+Headers are optional. If present they will be cloned so that no interactions are possible between routes.
+
+If not present the wrapper will create a 'continuationId' headers containing a GUID.
+This is very useful for logging but can also be used by the routes to identify parts of a same operation.
+
 Common routes
 -------------
 
@@ -138,13 +146,13 @@ Send any kind of HTTP requests, using [request](https://github.com/mikeal/reques
 The url used to initialize the route is a [Handlebars](http://handlebarsjs.com/) template that will be rendered
 at each execution of the route using the current body and headers.
 
-If the body of the message if a javascript object, then the content will be sent as JSON and the response parsed as well.
+If the body of the message is a javascript object, then the content will be sent as JSON and the response parsed as well.
 
 ```js
 route = routesHelper.http('GET', 'http://localhost:9615/test/{{body}}?q={{headers.query}}');
 
 route('my message body', function(err, responseBody, responseHeaders) {
-	// response headers are the same as inputs
+	// HTTP response received
 });
 ```
 
