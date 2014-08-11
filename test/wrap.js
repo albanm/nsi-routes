@@ -20,6 +20,7 @@ describe('route wrapping', function() {
 		}, function(err, responseMessage, responseHeaders) {
 			responseMessage.should.equal('response');
 			responseHeaders.should.have.property('header1', 'header1');
+			responseHeaders.should.have.property('continuationId');
 			callback();
 		});
 	});
