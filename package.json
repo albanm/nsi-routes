@@ -1,6 +1,6 @@
 {
   "name": "nsi-routes",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Node.js Services Integration - Routes commons",
   "main": "index.js",
   "scripts": {
@@ -16,6 +16,7 @@
   ],
   "author": "Alban Mouton <alban.mouton@gmail.com>",
   "license": "BSD-2-Clause",
+  "homepage": "https://github.com/albanm/nsi-routes",
   "bugs": {
     "url": "https://github.com/albanm/nsi-routes/issues"
   },
