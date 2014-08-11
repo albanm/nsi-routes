@@ -6,28 +6,29 @@ function RoutesManager(options) {
 	var that = this;
 
 	that.options = _.merge({
-		before: null,
-		after: null,
-		log: { // main logger configuration. Log routes initialization, errors, etc.
+		before: null, // a function to run as a before hook, signature: function(body, headers, callback)
+		after: null,  // a function to run as a after hook, signature: function(err, body, headers),
+		watch: false, // set to true to enable watching file resources (schemas, templates, etc)
+		log: {        // main logger configuration. info=routes initialization, debug=all messages contents
 			active: true,
-			config: {
+			config: { // winston configuration, see https://github.com/flatiron/winston#working-with-multiple-loggers-in-winston
 				console: {
 					level: 'info',
 					colorize: 'true',
 					label: 'nsi.routes'
 				}
 			},
-			metadata: {}
+			metadata: {} // add metadata to all logs
 		},
-		monitor: {
+		monitor: {    // monitoring logger. Used to profile all routes durations.
 			active: true,
-			config: {
+			config: { // winston configuration, see https://github.com/flatiron/winston#working-with-multiple-loggers-in-winston
 				console: {
 					level: 'info',
 					colorize: 'true',
 					label: 'nsi.monitor'
 				},
-				elasticsearch: {
+				elasticsearch: { // send monitoring logs to elasticsearch to maybe use kibana, see https://github.com/jackdbernier/winston-elasticsearch
 					level: 'error', // error by default = disabling it, just set level to 'info' and here we go
 					indexName: 'nsi-routes',
 					source: 'NSI - Routes',
@@ -35,7 +36,7 @@ function RoutesManager(options) {
 					typeName: 'log'
 				}
 			},
-			metadata: {}
+			metadata: {}  // add metadata to all logs
 		}
 	}, options);
 
