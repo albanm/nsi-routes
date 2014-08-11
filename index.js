@@ -84,6 +84,9 @@ RoutesManager.prototype.__defineGetter__('inOut', function() {
 RoutesManager.prototype.__defineGetter__('http', function() {
 	return require('./lib/http');
 });
+RoutesManager.prototype.__defineGetter__('handlebars', function() {
+	return require('./lib/handlebars');
+});
 
 module.exports = function(options) {
 	var routesManager = new RoutesManager(options);
