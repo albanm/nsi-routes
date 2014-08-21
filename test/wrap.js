@@ -2,10 +2,6 @@ var should = require('should');
 var routes = require('../');
 
 describe('route wrapping', function() {
-	var routesHelper;
-	before(function() {
-		routesHelper = routes();
-	});
 	var route1;
 	it('should wrap an asynchronous function', function() {
 		route1 = routesHelper.wrap(function(message, headers, callback) {

@@ -4,10 +4,6 @@ var http = require('http');
 var routes = require('../');
 
 describe('HTTP requests', function() {
-	var routesHelper;
-	before(function() {
-		routesHelper = routes();
-	});
 
 	var httpServer;
 	var httpCallback;

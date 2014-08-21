@@ -1,11 +1,6 @@
 var should = require('should');
-var routes = require('../');
 
 describe('Handlebars simple templating', function() {
-	var routesHelper;
-	before(function() {
-		routesHelper = routes();
-	});
 	var route1;
 	it('should generate a route function from a template', function() {
 		route1 = routesHelper.handlebars('test/resources/template1.hbs');

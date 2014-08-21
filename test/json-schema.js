@@ -2,10 +2,6 @@ var should = require('should');
 var routes = require('../');
 
 describe('JSON schema validator route', function() {
-	var routesHelper;
-	before(function() {
-		routesHelper = routes();
-	});
 	var route1;
 	it('should generate a route function from a schema', function() {
 		route1 = routesHelper.jsonSchema('test/resources/schema1.json');

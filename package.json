@@ -42,7 +42,7 @@
   },
   "config": {
     "blanket": {
-      "pattern": "./lib"
+      "pattern": ["nsi-routes/lib"]
     }
   }
 }
