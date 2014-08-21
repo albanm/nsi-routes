@@ -1,6 +1,6 @@
 {
   "name": "nsi-routes",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Node.js Services Integration - Routes commons",
   "main": "index.js",
   "scripts": {
