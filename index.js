@@ -88,6 +88,9 @@ RoutesManager.prototype.__defineGetter__('http', function() {
 RoutesManager.prototype.__defineGetter__('handlebars', function() {
 	return require('./lib/handlebars');
 });
+RoutesManager.prototype.__defineGetter__('xslt', function() {
+	return require('./lib/xslt');
+});
 
 module.exports = function(options) {
 	var routesManager = new RoutesManager(options);
