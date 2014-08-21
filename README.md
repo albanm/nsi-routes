@@ -149,7 +149,7 @@ route('<?xml version="1.0"?><product><id>1</id><name>name1</name></product>', fu
 Transform your messages using the simple templating engine [Handlebars](http://handlebarsjs.com/).
 
 ```js
-route = routesHelper.handlebars('test/resources/template1.xsd');
+route = routesHelper.handlebars('test/resources/template1.hbs');
 
 route('my message body', function(err, responseBody, responseHeaders) {
 	// response headers are the same as inputs
@@ -159,6 +159,20 @@ route('my message body', function(err, responseBody, responseHeaders) {
 The body and headers will be available in the template. For example:
 
     'This is a template. My body: {{body}}, and a header: {{headers.myHeader}}.'
+
+
+### XSL transformation
+
+Transform your messages using XSL transformations.
+
+```js
+route = routesHelper.xslt('test/resources/stylesheet.xsl');
+
+// headers will be sent as parameters to the transformation
+route(myXmlMessage, headers, function(err, responseBody, responseHeaders) {
+	// response headers are the same as inputs
+});
+```
 
 ### HTTP requests
 
@@ -176,7 +190,3 @@ route('my message body', function(err, responseBody, responseHeaders) {
 	// HTTP response received
 });
 ```
-
-### XSL transformation
-
-**TODO**. Using [https://github.com/bsuh/node_xslt](node_xslt), needs a little bit of configuration.
