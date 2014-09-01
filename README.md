@@ -120,7 +120,7 @@ route('body', function(err){
 
 ### JSON schema validation
 
-Validate messages, either text or object using a [JSON schema](http://json-schema.org/) loaded from a file and reloaded if the file changes. Uses [JaySchema](https://github.com/natesilva/jayschema).
+Validate messages, either text or object using a [JSON schema](http://json-schema.org/) loaded from a file and reloaded if the file changes and the watch option is active. Uses [JaySchema](https://github.com/natesilva/jayschema).
 
 ```js
 route = routesHelper.jsonSchema('test/resources/schema1.json');
@@ -133,7 +133,7 @@ route('{"id":1, "name":"name1"}', function(errs, responseBody, responseHeaders) 
 
 ### XSD validation
 
-Validate XML messages using a XML Schema Definition loaded from a file and reloaded if the file changes. Uses [libxmljs](https://github.com/polotek/libxmljs).
+Validate XML messages using a XML Schema Definition loaded from a file and reloaded if the file changes and the watch option is active. Uses [libxmljs](https://github.com/polotek/libxmljs).
 
 ```js
 route = routesHelper.xsd('test/resources/schema1.xsd');
